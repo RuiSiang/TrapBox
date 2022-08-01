@@ -14,15 +14,29 @@ body{
   background-color: white;
 }
 h1{
+  font-weight: 900;
   text-align: center;
+}
+h2{
+  font-weight: 500;
+  margin:0;
+}
+.flex{
+  display: flex;
+  justify-content: center;
+}
+.flex>div{
+  text-align: center;
+  min-width: 50%;
 }
 </style>
 `
 
 app.use(ctx => {
+  const method = ctx.method
+  const url = ctx.url.split('?')[0]
   const headers = Object.entries(ctx.headers || {}).map(([key, val]) => `<li>${key}=${val}</li>`).join('')
   const query = Object.entries(ctx.query || {}).map(([key, val]) => `<li>${key}=${val}</li>`).join('')
-  const params = Object.entries(ctx.params || {}).map(([key, val]) => `<li>${key}=${val}</li>`).join('')
   const body = ctx.request.body
   const html = `
   <!DOCTYPE html>
@@ -33,10 +47,18 @@ app.use(ctx => {
   <body>
   <div class="wrap">
   <h1>TrapBox</h1>
+  <div class="flex">
+    <div>
+      <h2>Method</h2>
+      <div>${method}</div>
+    </div>
+    <div>
+      <h2>Target Url</h2>
+      <div>${url}</div>
+    </div>
+  </div>
   <h2>Headers</h2>
   <ul>${headers || ''}</ul>
-  <h2>Params</h2>
-  <ul>${params || ''}</ul>
   <h2>Query</h2>
   <ul>${query || ''}</ul>
   <h2>Body</h2>
