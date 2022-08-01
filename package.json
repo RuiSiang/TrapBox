@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +20,8 @@
   "homepage": "https://github.com/RuiSiang/TrapBox#readme",
   "dependencies": {
     "koa": "^2.13.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

@@ -6,6 +6,8 @@ const styles = `
 body{
   padding: 4rem;
   background-color: #eee;
+  word-break: break-all;
+  font-family: Helvetica, Sans-Serif;
 }
 .wrap{
   padding: 4rem;
